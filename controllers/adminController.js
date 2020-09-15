@@ -11,6 +11,22 @@ module.exports = {
     res.render("admin/category/view_category", {
       category
     });
+  },
+
+  editCategory: async (req, res) => {
+    const {
+      id,
+      name
+    } = req.body;
+
+    const category = await Category.findOne({
+      _id: id
+    });
+
+    category.name = name;
+
+    await category.save()
+    res.redirect('/admin/category')
 
   },
 
