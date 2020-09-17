@@ -4,8 +4,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 // method override
-const methodOverride = require('method-override');
-
+const methodOverride = require("method-override");
+// import express session untuk flash data maupun session login
+const session = require("express-session");
+// import connect-flash
+const flash = require("connect-flash");
 // import mongoose
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/db_bwamern", {
@@ -27,12 +30,26 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 // method override untuk update data
-app.use(methodOverride('_method'))
+app.use(methodOverride("_method"));
+// method express session
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 },
+  })
+);
+// method connect-flash
+app.use(flash());
+
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 // template setting bootstrap
