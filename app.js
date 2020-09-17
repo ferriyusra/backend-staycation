@@ -22,7 +22,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 // router admin
 const adminRouter = require("./routes/admin");
-const AdminController = require("./controllers/adminController");
+// const AdminController = require("./controllers/adminController");
 
 var app = express();
 
