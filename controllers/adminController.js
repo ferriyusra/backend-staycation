@@ -1,4 +1,4 @@
-const Category = require('../models/Category')
+const Category = require("../models/Category");
 
 module.exports = {
   viewDashboard: (req, res) => {
@@ -9,36 +9,37 @@ module.exports = {
     const category = await Category.find();
     // console.log(category);
     res.render("admin/category/view_category", {
-      category
+      category,
     });
   },
 
   editCategory: async (req, res) => {
-    const {
-      id,
-      name
-    } = req.body;
+    const { id, name } = req.body;
 
     const category = await Category.findOne({
-      _id: id
+      _id: id,
     });
 
     category.name = name;
 
-    await category.save()
-    res.redirect('/admin/category')
+    await category.save();
+    res.redirect("/admin/category");
+  },
 
+  deleteCategory: async (req, res) => {
+    const { id } = req.params;
+    const category = await Category.findOne({ _id: id });
+    await category.remove();
+    res.redirect("/admin/category");
   },
 
   addCategory: async (req, res) => {
-    const {
-      name
-    } = req.body;
+    const { name } = req.body;
     // console.log(name);
     await Category.create({
-      name
-    })
-    res.redirect('/admin/category')
+      name,
+    });
+    res.redirect("/admin/category");
   },
 
   viewBank: (req, res) => {
