@@ -21,11 +21,13 @@ router.post("/item/add/feature", uploadSingle, adminController.addFeature);
 router.put("/category", adminController.editCategory);
 router.put("/bank", uploadSingle, adminController.editBank);
 router.put("/item/:id", uploadMultiple, adminController.editItem);
+router.put("/item/update/feature", uploadSingle, adminController.editFeature);
 
 // router atau endpoint untuk menghapus data
 router.delete("/category/:id", adminController.deleteCategory);
 router.delete("/bank/:id", adminController.deleteBank);
 router.delete("/item/:id/delete", adminController.deleteItem);
+router.delete("/item/:itemId/feature/:id", adminController.deleteFeature);
 
 // router atau endpoint detail item
 router.get("/item/show-detail-item/:itemId", adminController.viewDetailItem);
