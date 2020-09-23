@@ -47,7 +47,8 @@
       <label for="category">Category</label>
       <div class="form-group">
         <select class="form-control" name="categoryId">
-          <option value="<%= item.categoryId._id %>">
+          <option value="">Select Category</option>
+          <option value="<%= item.categoryId._id %>" selected>
             --- <%= item.categoryId.name %>---
           </option>
           <% for( let i = 0; i < category.length; i++ ) { %>
@@ -63,7 +64,7 @@
     <div class="form-group">
       <label for="about">Description</label>
       <textarea class="form-control" name="about">
-<%= item.description %></textarea
+    <%= item.description %></textarea
       >
     </div>
     <button type="submit" class="btn btn-md btn-primary mb-1">Save</button>

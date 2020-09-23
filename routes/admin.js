@@ -15,6 +15,7 @@ router.get("/item/:id", adminController.showEditItem);
 router.post("/category", adminController.addCategory);
 router.post("/bank", uploadSingle, adminController.addBank);
 router.post("/item", uploadMultiple, adminController.addItem);
+router.post("/item/add/feature", uploadSingle, adminController.addFeature);
 
 // router atau endpoint untuk mengedit data
 router.put("/category", adminController.editCategory);
@@ -25,5 +26,8 @@ router.put("/item/:id", uploadMultiple, adminController.editItem);
 router.delete("/category/:id", adminController.deleteCategory);
 router.delete("/bank/:id", adminController.deleteBank);
 router.delete("/item/:id/delete", adminController.deleteItem);
+
+// router atau endpoint detail item
+router.get("/item/show-detail-item/:itemId", adminController.viewDetailItem);
 
 module.exports = router;
