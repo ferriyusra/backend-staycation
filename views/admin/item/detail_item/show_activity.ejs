@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-md-5">
           <form
-            action="/admin/bank"
+            action="/admin/item/add/activity"
             method="POST"
             enctype="multipart/form-data"
           >
@@ -36,6 +36,7 @@
               <label for="image">Image</label>
               <input type="file" class="form-control" name="image" required />
             </div>
+            <input type="hidden" value="<%= itemId %>" name="itemId" />
             <button type="submit" class="btn btn-primary">Save</button>
           </form>
         </div>
@@ -50,12 +51,51 @@
               <thead>
                 <tr>
                   <th>No</th>
+                  <th>Name</th>
                   <th>Type</th>
                   <th>Image URL</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                <% for( let i = 0; i < activity.length; i++ ) { %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= activity[i].name %></td>
+                  <td><%= activity[i].type %></td>
+                  <td>
+                    <img
+                      src="http://localhost:3000/<%= activity[i].imageUrl %>"
+                      alt="imageUrl"
+                      width="70px"
+                    />
+                  </td>
+                  <td>
+                    <form
+                      action="/admin/item/<%= itemId %>/activity/<%= activity[i].id %>?_method=DELETE"
+                      method="POST"
+                    >
+                      <a
+                        href="javascript:void()"
+                        type="button"
+                        class="btn btn-warning btn-circle btn-md button-update"
+                        data-id="<%= activity[i].id %>"
+                        data-name="<%= activity[i].name %>"
+                        data-type="<%= activity[i].type %>"
+                      >
+                        <i class="fas fa-edit"></i
+                      ></a>
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-circle btn-md"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
             </table>
           </div>
         </div>
