@@ -32,12 +32,11 @@ const bookingSchema = new mongoose.Schema({
       type: Number,
       required: true,
     },
-    total: {
-      type: Number,
-      required: true,
-    },
   },
-
+  total: {
+    type: Number,
+    required: true,
+  },
   memberId: {
     type: ObjectId,
     ref: "Member",
@@ -62,7 +61,7 @@ const bookingSchema = new mongoose.Schema({
     },
     status: {
       type: String,
-      required: true,
+      default: "Prosses",
     },
   },
 });

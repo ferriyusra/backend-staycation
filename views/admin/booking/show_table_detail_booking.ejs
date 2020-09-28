@@ -11,12 +11,12 @@
     <div class="row">
       <div class="col-md-4">
         <img
-          src="http://localhost:3000/<%= booking.payments.proofPayment %> "
+          src="http://localhost:3000/<%= booking.payments.proofPayment %>"
           alt="image"
           style="width: 100%; display: block"
         />
       <div class="row ml-1">
-          <% if (booking.payments.status == 'Proses') { %>
+          <% if (booking.payments.status == 'Prosses') { %>
            
             <form
                 action="/admin/booking/<%= booking.id %>/confirmation?_method=PUT"

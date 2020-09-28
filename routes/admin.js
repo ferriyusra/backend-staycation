@@ -31,8 +31,8 @@ router.put("/bank", uploadSingle, adminController.editBank);
 router.put("/item/:id", uploadMultiple, adminController.editItem);
 router.put("/item/update/feature", uploadSingle, adminController.editFeature);
 router.put("/item/update/activity", uploadSingle, adminController.editActivity);
-router.get("/booking/:id/confirmation", adminController.actionConfirmation);
-router.get("/booking/:id/confirmation", adminController.actionReject);
+router.put("/booking/:id/confirmation", adminController.actionConfirmation);
+router.put("/booking/:id/reject", adminController.actionReject);
 
 // router atau endpoint untuk menghapus data
 router.delete("/category/:id", adminController.deleteCategory);

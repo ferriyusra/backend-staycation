@@ -637,6 +637,7 @@ module.exports = {
       const booking = await Booking.findOne({ _id: id })
         .populate("memberId")
         .populate("bankId");
+      // console.log(booking);
       res.render("admin/booking/show_detail_booking", {
         title: "Staycation | Detail Booking",
         user: req.session.user,
@@ -652,7 +653,7 @@ module.exports = {
     const { id } = req.params;
     try {
       const booking = await Booking.findOne({ _id: id });
-      booking.paymetns.status = "Accept";
+      booking.payments.status = "Accept";
       req.flash("alertMessage", "Success confirmation payment");
       req.flash("alertStatus", "success");
       await booking.save();
@@ -666,7 +667,7 @@ module.exports = {
     const { id } = req.params;
     try {
       const booking = await Booking.findOne({ _id: id });
-      booking.paymetns.status = "Reject";
+      booking.payments.status = "Reject";
       req.flash("alertMessage", "Success reject payment");
       req.flash("alertStatus", "success");
       await booking.save();
